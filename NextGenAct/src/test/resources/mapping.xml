@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etcl:MappingList xsi:schemaLocation="http://nsn.com/oss/nbi/etclmap/ ETCLMapping.xsd" xmlns:etcl="http://nsn.com/oss/nbi/etclmap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--etcl:Mapping from="c" to="dn" />
+	<etcl:Mapping from="f" to="alarmKey" type="com.nsn.oss.nbi.oes.access.operation.NsnAlarmKey" processor="ValueSettor">
+		<etcl:ParamGroup group="setAlarmId">
+			<etcl:param name="value">java.lang.Long</etcl:param>
+		</etcl:ParamGroup>
+	</etcl:Mapping-->
+	<etcl:Mapping from="g" to="probableCauseCode" type="java.lang.Long"/>
+	<etcl:Mapping from="h" to="perceivedSeverity" type="com.nsn.oss.nbi.common.etcl.processor.TgppPerceivedSeverity">
+		<etcl:ParamGroup group="enum">
+			<etcl:param name="1">INDETERMINATE</etcl:param>
+			<etcl:param name="2">CRITICAL</etcl:param>
+			<etcl:param name="3">MAJOR</etcl:param>
+			<etcl:param name="4">MINOR</etcl:param>
+			<etcl:param name="5">WARNING</etcl:param>
+			<etcl:param name="6">CLEARED</etcl:param>
+		</etcl:ParamGroup>
+	</etcl:Mapping>
+	<etcl:Mapping from="i" to="specificProblem" type="java.lang.Long" processor="WrappedLongProcessor"/>
+	<etcl:Mapping from="n" to="ackStatus" type="com.nsn.oss.nbi.fm.operation.interfaces.AckStatus">
+		<etcl:ParamGroup group="enum">
+			<etcl:param name="2">UNACKED</etcl:param>
+			<etcl:param name="1">ACKED</etcl:param>
+		</etcl:ParamGroup>
+	</etcl:Mapping>
+	
+	<!--etcl:Mapping from=".c" to="dn" />
+	<etcl:Mapping from=".f" to="alarmKey" type="com.nsn.oss.nbi.fm.operation.interfaces.NsnAlarmKey" processor="ValueSettor">
+		<etcl:ParamGroup group="setAlarmId">
+			<etcl:param name="value">java.lang.Long</etcl:param>
+		</etcl:ParamGroup>
+	</etcl:Mapping-->
+	<etcl:Mapping from=".g" to="probableCauseCode" type="java.lang.Long"/>
+	<etcl:Mapping from=".h" to="perceivedSeverity" type="com.nsn.oss.nbi.common.etcl.processor.TgppPerceivedSeverity">
+		<etcl:ParamGroup group="enum">
+			<etcl:param name="1">INDETERMINATE</etcl:param>
+			<etcl:param name="2">CRITICAL</etcl:param>
+			<etcl:param name="3">MAJOR</etcl:param>
+			<etcl:param name="4">MINOR</etcl:param>
+			<etcl:param name="5">WARNING</etcl:param>
+			<etcl:param name="6">CLEARED</etcl:param>
+		</etcl:ParamGroup>
+	</etcl:Mapping>
+	<etcl:Mapping from=".i" to="specificProblem" type="java.lang.Long" processor="WrappedLongProcessor"/>
+	<etcl:Mapping from=".n" to="ackStatus" type="com.nsn.oss.nbi.fm.operation.interfaces.AckStatus">
+		<etcl:ParamGroup group="enum">
+			<etcl:param name="2">UNACKED</etcl:param>
+			<etcl:param name="1">ACKED</etcl:param>
+		</etcl:ParamGroup>
+	</etcl:Mapping>
+	 
+</etcl:MappingList>
+
