@@ -15,7 +15,7 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers{
     val controller=new ShortestDistanceController("A","C")
     controller.moveToNextRoute(startRoute)
     controller.moveToNextRoute(endRoute)
-    controller.keepGoingDown
+    controller.keepTravel
     controller.moveBack
     controller.getControllingDistance shouldBe 9
   }
@@ -28,16 +28,16 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers{
     val routeD:Edge=Edge(new RouteStation("D"),2)
     val controller=new ShortestDistanceController("A","C")
     controller.moveToNextRoute(routeB)
-    controller.keepGoingDown shouldBe true
+    controller.keepTravel shouldBe true
     controller.moveToNextRoute(routeC)
-    controller.keepGoingDown shouldBe false
+    controller.keepTravel shouldBe false
     controller.moveBack
     controller.moveBack
 
     controller.moveToNextRoute(routeD)
-    controller.keepGoingDown shouldBe true
+    controller.keepTravel shouldBe true
     controller.moveToNextRoute(routeC)
-    controller.keepGoingDown shouldBe false
+    controller.keepTravel shouldBe false
     controller.getControllingDistance shouldBe 6
   }
 
@@ -49,16 +49,16 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers{
     val routeC:Edge=Edge(new RouteStation("C"),4)
     val controller=new ShortestDistanceController("B","B")
     controller.moveToNextRoute(routeC)
-    controller.keepGoingDown shouldBe true
+    controller.keepTravel shouldBe true
     controller.moveToNextRoute(routeB)
-    controller.keepGoingDown shouldBe false
+    controller.keepTravel shouldBe false
     controller.moveBack
     controller.moveBack
 
     controller.moveToNextRoute(routeA)
-    controller.keepGoingDown shouldBe true
+    controller.keepTravel shouldBe true
     controller.moveToNextRoute(routeB)
-    controller.keepGoingDown shouldBe false
+    controller.keepTravel shouldBe false
     controller.getControllingDistance shouldBe 9
   }
 

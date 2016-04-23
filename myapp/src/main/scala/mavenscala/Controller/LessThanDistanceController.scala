@@ -8,11 +8,11 @@ class LessThanDistanceController(startRoute: String, stopRoute: String,val lessT
   override def getControllingDistance: Int = lessThanDistance
 
 
-  override def keepGoingDown: Boolean = {
+  override def keepTravel: Boolean = {
     var found = currentRouteIsSameWithStopRoute
     val isLessThanMaxDistance=currentDistanceNotExceed
     if (found && isLessThanMaxDistance) {
-      preseaveSequence
+      saveRoutes
     }
     isLessThanMaxDistance
   }

@@ -30,17 +30,17 @@ class ShortestDistanceController(startRoute: String, endAtRoute: String) extends
     }
   }
 
-  override def keepGoingDown: Boolean = {
+  override def keepTravel: Boolean = {
     if (alreadyVisited)
       return false
-    return super.keepGoingDown
+    return super.keepTravel
   }
 
 
-  override def preseaveSequence() = {
+  override def saveRoutes() = {
     minimalDistance = sumCurrentSearchPathDistance
     validSequence.clear()
-    super.preseaveSequence
+    super.saveRoutes
   }
 
 

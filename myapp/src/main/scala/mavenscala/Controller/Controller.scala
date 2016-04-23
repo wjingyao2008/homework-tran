@@ -23,9 +23,9 @@ abstract class Controller {
 
   def topStackRouteName=searchPath.top.toRoute.routeName
 
-  def keepGoingDown: Boolean
+  def keepTravel: Boolean
 
-  def preseaveSequence
+  def saveRoutes
 
   def getAllSeq: Seq[String] = validSequence
 

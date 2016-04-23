@@ -14,9 +14,9 @@ class DepthControllerTest extends FunSuite {
     deepControler.moveToNextRoute(Edge(new RouteStation("A"),1))
     deepControler.moveToNextRoute(Edge(new RouteStation("B"),1))
     deepControler.moveToNextRoute(Edge(new RouteStation("C"),1))
-    deepControler.preseaveSequence
+    deepControler.saveRoutes
     deepControler.moveBack()
-    deepControler.preseaveSequence
+    deepControler.saveRoutes
     println(deepControler.getAllSeq.toString())
 
   }

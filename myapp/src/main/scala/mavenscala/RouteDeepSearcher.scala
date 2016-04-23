@@ -9,7 +9,7 @@ class RouteDeepSearcher(controler: Controller) {
 
 
   def search(currentRoute: Route): Unit = {
-    if (!controler.keepGoingDown) {
+    if (!controler.keepTravel) {
       controler.moveBack()
       return
     }

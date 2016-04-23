@@ -6,18 +6,18 @@ package mavenscala.Controller
 class DepthController(val startRoute:String, val endAtRoute: String,val count: Int) extends Controller {
 
 
-  override def preseaveSequence: Unit = {
+  override def saveRoutes: Unit = {
     val path = searchPath.map(_.toRoute.routeName).reverse.mkString("-")
     val str=s"$startRoute-$path"
     validSequence+=str
   }
 
-  override def keepGoingDown: Boolean = {
+  override def keepTravel: Boolean = {
     var found = false
     if (searchPath.nonEmpty)
       found = endAtRoute == (searchPath.top.toRoute.routeName)
     if (found)
-      preseaveSequence
+      saveRoutes
 
     val noNeed = found | (searchPath.size >= count)
     !noNeed

@@ -7,10 +7,10 @@ abstract class AbstractDistanceController(val startRoute: String, val stopRoute:
 
   def getControllingDistance: Int
 
-  override def keepGoingDown: Boolean = {
+  override def keepTravel: Boolean = {
     var found = currentRouteIsSameWithStopRoute
     if (found && currentDistanceNotExceed) {
-      preseaveSequence
+      saveRoutes
     }
 
     val noNeed = found
@@ -27,7 +27,7 @@ abstract class AbstractDistanceController(val startRoute: String, val stopRoute:
 
   def currentDistanceNotExceed: Boolean = sumCurrentSearchPathDistance < getControllingDistance
 
-  override def preseaveSequence: Unit = {
+  override def saveRoutes: Unit = {
     val path = searchPath.map(_.toRoute.routeName).reverse.mkString("-")
     val str = s"$startRoute-$path"
     validSequence += str
