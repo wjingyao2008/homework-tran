@@ -8,15 +8,12 @@
         <!--<artifactId>nbi</artifactId>-->
         <!--<version>DYNAMIC-SNAPSHOT</version>-->
     <!--</parent>-->
-    <groupId>com.nsn.oss.myscalamaven</groupId>
+    <groupId>com.yang.myscalamaven</groupId>
     <artifactId>myscalamaven</artifactId>
     <packaging>pom</packaging>
     <version>DYNAMIC-SNAPSHOT</version>
 
     <modules>
-        <module>firsttry</module>
-        <module>myarchtype</module>
-        <module>NextGenAct</module>
         <module>myapp</module>
     </modules>
     <properties>
@@ -98,100 +95,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.nsn.oss.nbi</groupId>
-                <artifactId>util</artifactId>
-                <version>${nbi-common-lib-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons-lang-version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jacorb</groupId>
-                <artifactId>jacorb</artifactId>
-                <version>${jacorb-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.nsn.oss.nbi.common.lib.util</groupId>
-                <artifactId>common-utils-dynconf</artifactId>
-                <version>${nbi-common-lib-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.typesafe.akka</groupId>
-                <artifactId>akka-actor_2.11</artifactId>
-                <version>2.3.14</version>
-            </dependency>
-            <!--<dependency>-->
-                <!--<groupId>com.typesafe.akka</groupId>-->
-                <!--<artifactId>akka-tests_2.11</artifactId>-->
-                <!--<version>2.3.14</version>-->
-            <!--</dependency>-->
-            <dependency>
-                <groupId>com.typesafe.akka</groupId>
-                <artifactId>akka-testkit_2.11</artifactId>
-                <version>2.3.14</version>
-            </dependency>
-            <dependency>
-                <groupId>com.typesafe.akka</groupId>
-                <artifactId>akka-slf4j_2.11</artifactId>
-                <version>2.3.14</version>
-            </dependency>
-            <dependency>
-                <groupId>com.nsn.obs.mw.medfra</groupId>
-                <artifactId>mf-core</artifactId>
-                <scope>runtime</scope>
-                <version>8.0.0.450</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jacorb</groupId>
-                <artifactId>jacorb-services</artifactId>
-                <version>${jacorb-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.nsn.oss.nbi.common</groupId>
-                <artifactId>irp-info-service</artifactId>
-                <version>DYNAMIC-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.nsn.oss.nbi.common</groupId>
-                <artifactId>nbi-logging</artifactId>
-                <version>DYNAMIC-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.nsn.oss.nbi.common</groupId>
-                <artifactId>nbi3gc-internal-corba-interface</artifactId>
-                <version>DYNAMIC-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>1.7.5</version>
-            </dependency>
-            <!--<dependency>-->
-                <!--<groupId>org.apache.logging.log4j</groupId>-->
-                <!--<artifactId>log4j-bom</artifactId>-->
-                <!--<version>2.5</version>-->
-                <!--<scope>import</scope>-->
-                <!--<type>pom</type>-->
-            <!--</dependency>-->
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -278,21 +181,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-surefire-plugin</artifactId>-->
-                <!--<version>2.13</version>-->
-                <!--<configuration>-->
-                    <!--<useFile>false</useFile>-->
-                    <!--<disableXmlReport>true</disableXmlReport>-->
-                    <!--&lt;!&ndash; If you have classpath issue like NoDefClassError,... &ndash;&gt;-->
-                    <!--&lt;!&ndash; useManifestOnlyJar>false</useManifestOnlyJar &ndash;&gt;-->
-                    <!--<includes>-->
-                        <!--<include>**/*Test.*</include>-->
-                        <!--<include>**/*Suite.*</include>-->
-                    <!--</includes>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>
