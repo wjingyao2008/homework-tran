@@ -1,7 +1,7 @@
 package mavenscala.search
 
 import mavenscala.railroad.{Edge, SimpleStation}
-import mavenscala.search.controlimpl.ShortestDistanceController
+import mavenscala.search.controllerimpl.ShortestDistanceController
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -17,7 +17,7 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers {
     controller.moveToNext(startRoute)
     controller.moveToNext(endRoute)
     controller.keepTravel
-    controller.moveBack
+    controller.moveBack()
     controller.getControllingDistance shouldBe 9
   }
 
@@ -32,8 +32,8 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers {
     controller.keepTravel shouldBe true
     controller.moveToNext(routeC)
     controller.keepTravel shouldBe false
-    controller.moveBack
-    controller.moveBack
+    controller.moveBack()
+    controller.moveBack()
 
     controller.moveToNext(routeD)
     controller.keepTravel shouldBe true
@@ -53,8 +53,8 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers {
     controller.keepTravel shouldBe true
     controller.moveToNext(routeB)
     controller.keepTravel shouldBe false
-    controller.moveBack
-    controller.moveBack
+    controller.moveBack()
+    controller.moveBack()
 
     controller.moveToNext(routeA)
     controller.keepTravel shouldBe true

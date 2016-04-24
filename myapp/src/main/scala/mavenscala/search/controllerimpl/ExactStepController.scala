@@ -1,4 +1,4 @@
-package mavenscala.search.controlimpl
+package mavenscala.search.controllerimpl
 
 /**
   * Created by Administrator on 2016/4/23 0023.

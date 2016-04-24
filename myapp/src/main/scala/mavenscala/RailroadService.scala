@@ -4,7 +4,7 @@ import java.util.NoSuchElementException
 
 import mavenscala.railroad.{SimpleStation, Station}
 import mavenscala.search._
-import mavenscala.search.controlimpl.{ExactStepController, LessThanDistanceController, MaximumStepsController, ShortestDistanceController}
+import mavenscala.search.controllerimpl.{ExactStepController, LessThanDistanceController, MaximumStepsController, ShortestDistanceController}
 
 /**
   * Created by Administrator on 2016/4/23 0023.
