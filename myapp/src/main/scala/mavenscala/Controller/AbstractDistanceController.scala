@@ -28,7 +28,7 @@ abstract class AbstractDistanceController(val startRoute: String, val stopRoute:
   def currentDistanceNotExceed: Boolean = sumCurrentSearchPathDistance < getControllingDistance
 
   override def saveRoutes: Unit = {
-    val path = searchPath.map(_.toRoute.routeName).reverse.mkString("-")
+    val path = searchPath.map(_.toStation.name).reverse.mkString("-")
     val str = s"$startRoute-$path"
     validSequence += str
   }

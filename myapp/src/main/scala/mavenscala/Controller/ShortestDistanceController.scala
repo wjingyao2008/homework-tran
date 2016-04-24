@@ -1,6 +1,6 @@
 package mavenscala.Controller
 
-import mavenscala.{Edge, Route}
+import mavenscala.{Edge, Station}
 
 /**
   * Created by Administrator on 2016/4/23 0023.
@@ -15,7 +15,7 @@ class ShortestDistanceController(startRoute: String, endAtRoute: String) extends
 
   override def moveToNextRoute(route:Edge):Unit = {
     super.moveToNextRoute(route)
-    val routeName = route.toRoute.routeName
+    val routeName = route.toStation.name
     if (routeSet.contains(routeName))
       alreadyVisited = true
     else
@@ -25,7 +25,7 @@ class ShortestDistanceController(startRoute: String, endAtRoute: String) extends
   override def moveBack() = {
     if (searchPath.nonEmpty) {
       val poped = searchPath.pop()
-      routeSet.-=(poped.toRoute.routeName)
+      routeSet.-=(poped.toStation.name)
       alreadyVisited = false
     }
   }

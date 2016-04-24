@@ -1,6 +1,6 @@
 package mavenscala.Controller
 
-import mavenscala.{Edge, Route, RouteStation}
+import mavenscala.{Edge, Station, SimpleStation}
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -10,8 +10,8 @@ import org.scalatest.{FunSuite, Matchers}
 class ShortestDistanceControllerTest extends FunSuite with Matchers{
 
   test("when route with A-C,then the path can be get") {
-    val startRoute:Edge=Edge(new RouteStation("A"),5)
-    val endRoute:Edge=Edge(new RouteStation("C"),4)
+    val startRoute:Edge=Edge(new SimpleStation("A"),5)
+    val endRoute:Edge=Edge(new SimpleStation("C"),4)
     val controller=new ShortestDistanceController("A","C")
     controller.moveToNextRoute(startRoute)
     controller.moveToNextRoute(endRoute)
@@ -22,10 +22,10 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers{
 
 
   test("given the route A-B-C,A-D-C,then the shortest path can be get") {
-    val routeA:Edge=Edge(new RouteStation("A"),5)
-    val routeB:Edge=Edge(new RouteStation("B"),5)
-    val routeC:Edge=Edge(new RouteStation("C"),4)
-    val routeD:Edge=Edge(new RouteStation("D"),2)
+    val routeA:Edge=Edge(new SimpleStation("A"),5)
+    val routeB:Edge=Edge(new SimpleStation("B"),5)
+    val routeC:Edge=Edge(new SimpleStation("C"),4)
+    val routeD:Edge=Edge(new SimpleStation("D"),2)
     val controller=new ShortestDistanceController("A","C")
     controller.moveToNextRoute(routeB)
     controller.keepTravel shouldBe true
@@ -44,9 +44,9 @@ class ShortestDistanceControllerTest extends FunSuite with Matchers{
 
 
   test("given the route B-C-B,B-A-B,then the shortest path can be get") {
-    val routeA:Edge=Edge(new RouteStation("A"),5)
-    val routeB:Edge=Edge(new RouteStation("B"),5)
-    val routeC:Edge=Edge(new RouteStation("C"),4)
+    val routeA:Edge=Edge(new SimpleStation("A"),5)
+    val routeB:Edge=Edge(new SimpleStation("B"),5)
+    val routeC:Edge=Edge(new SimpleStation("C"),4)
     val controller=new ShortestDistanceController("B","B")
     controller.moveToNextRoute(routeC)
     controller.keepTravel shouldBe true

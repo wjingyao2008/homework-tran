@@ -7,29 +7,39 @@ import mavenscala.Controller._
   * Created by Administrator on 2016/4/23 0023.
   */
 class RailroadService {
-  private var rootRoute = new RouteStation("root")
 
-  def getRoute(routeName: String) = rootRoute.getRoute(routeName).toRoute
+  private var rootRoute = new SimpleStation("root")
 
-  def addRouteEdge(represent: String): Unit = {
+  def getStation(routeName: String) = rootRoute.getRoute(routeName).toStation
+
+  def addRoute(represent: String): Unit = {
     if (represent.length != 3)
       throw new IllegalArgumentException(s"the route between two towns are not valid: $represent.")
-    val fromRouteName = represent.charAt(0).toString
-    val toRouteName = represent.charAt(1).toString
+    val fromStation = represent.charAt(0).toString
+    val toStation = represent.charAt(1).toString
     val distance = Integer.valueOf(represent.charAt(2).toString)
-    addRouteEdge(fromRouteName, toRouteName, distance)
+    addRoute(fromStation, toStation, distance)
   }
 
 
-  private def addRouteEdge(fromRouteName: String, toRouteName: String, distance: Int): Unit = {
-    val fromRoute = getOrCreatRoute(fromRouteName)
-    val toRoute = getOrCreatRoute(toRouteName)
-    fromRoute.addNeighborRoute(toRoute, distance)
+  private def addRoute(fromStation: String, toStation: String, distance: Int): Unit = {
+    val fromRoute = getOrCreatRoute(fromStation)
+    val toRoute = getOrCreatRoute(toStation)
+    fromRoute.addRoute(toRoute, distance)
   }
 
 
-  private def getOrCreatRoute(routName: String): Route = {
-    rootRoute.getRouteOrUpdate(routName).toRoute
+  private def getOrCreatRoute(routName: String): Station = {
+    rootRoute.getRouteOrUpdate(routName).toStation
+  }
+
+  def getDistance(routeSequeceStr: String): String = {
+    val routeSequece = routeSequeceStr.split("-")
+    try {
+      rootRoute.travelThroughSeq(routeSequece.iterator).toString
+    } catch {
+      case ex: IllegalArgumentException => "NO SUCH ROUTE"
+    }
   }
 
   def getTripNumberInMaximumStops(startRouteName: String, toRouteName: String, maxStops: Int): String = {
@@ -49,8 +59,8 @@ class RailroadService {
     searcher.search(startRoute)
   }
 
-  private def checkRouteExist(routeName: String): Route = this.getRoute(routeName)
 
+  private def checkRouteExist(routeName: String): Station = this.getStation(routeName)
 
   def getTripNumberInExactStops(startRouteName: String, toRouteName: String, exactStops: Int): String = {
     try {
@@ -72,21 +82,12 @@ class RailroadService {
     }
   }
 
+
   def getTripNumberLessThan(startRouteName: String, toRouteName: String,lessThanDistance:Int):String={
     try {
       val controller = new LessThanDistanceController(startRouteName, toRouteName,lessThanDistance)
       runsearch(startRouteName, toRouteName, controller)
       controller.getAllSeq.size.toString
-    } catch {
-      case ex: IllegalArgumentException => "NO SUCH ROUTE"
-    }
-  }
-
-
-  def getDistance(routeSequeceStr: String): String = {
-    val routeSequece = routeSequeceStr.split("-")
-    try {
-      rootRoute.travelThroughSeq(routeSequece.iterator).toString
     } catch {
       case ex: IllegalArgumentException => "NO SUCH ROUTE"
     }

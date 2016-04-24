@@ -9,15 +9,15 @@ import org.scalatest.{BeforeAndAfterEach, FunSuite, Matchers}
 class RailroadServiceTest extends FunSuite with Matchers with BeforeAndAfterEach {
 
   val service = new RailroadService
-  service.addRouteEdge("AB5")
-  service.addRouteEdge("BC4")
-  service.addRouteEdge("CD8")
-  service.addRouteEdge("DC8")
-  service.addRouteEdge("DE6")
-  service.addRouteEdge("AD5")
-  service.addRouteEdge("CE2")
-  service.addRouteEdge("EB3")
-  service.addRouteEdge("AE7")
+  service.addRoute("AB5")
+  service.addRoute("BC4")
+  service.addRoute("CD8")
+  service.addRoute("DC8")
+  service.addRoute("DE6")
+  service.addRoute("AD5")
+  service.addRoute("CE2")
+  service.addRoute("EB3")
+  service.addRoute("AE7")
 
 
   test("given service,then A-B distance will be 5") {

@@ -1,6 +1,6 @@
 package mavenscala.Controller
 
-import mavenscala.{Edge, Route}
+import mavenscala.{Edge, Station}
 
 import scala.collection.mutable.{ArrayBuffer, Stack}
 
@@ -21,7 +21,7 @@ abstract class Controller {
     }
   }
 
-  def topStackRouteName=searchPath.top.toRoute.routeName
+  def topStackRouteName=searchPath.top.toStation.name
 
   def keepTravel: Boolean
 

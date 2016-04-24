@@ -8,14 +8,14 @@ import mavenscala.Controller.Controller
 class RouteDeepSearcher(controler: Controller) {
 
 
-  def search(currentRoute: Route): Unit = {
+  def search(currentRoute: Station): Unit = {
     if (!controler.keepTravel) {
       controler.moveBack()
       return
     }
     for(edge<-currentRoute.allConnectedRoute.values){
       controler.moveToNextRoute(edge)
-      search(edge.toRoute)
+      search(edge.toStation)
     }
     controler.moveBack()
   }
