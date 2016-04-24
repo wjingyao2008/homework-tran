@@ -5,7 +5,7 @@ import mavenscala.railroad.Station
 /**
   * Created by Administrator on 2016/4/23 0023.
   */
-class RouteDeepSearcher(controler: Controller) {
+class RouteDeepSearcher(val controler: Controller) {
 
 
   def search(currentStation: Station): Unit = {
