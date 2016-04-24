@@ -3,15 +3,13 @@ package mavenscala.search.controlimpl
 /**
   * Created by Administrator on 2016/4/23 0023.
   */
-class ExactStepController(startStationName: String, endStationName: String, count: Int) extends DepthController(startStationName, endStationName, count) {
+class ExactStepController(startStationName: String, endStationName: String, steps: Int) extends DepthController(startStationName, endStationName, steps) {
 
   override def keepTravel: Boolean = {
-    var foundRoute = false
-    if (searchPath.nonEmpty)
-      foundRoute = (endStationName == currentStationName) && (searchPath.size == count)
+    val foundRoute = hasReachedEndStation && (searchPath.size == steps)
     if (foundRoute)
       saveRoutes
-    val noNeed = foundRoute | (searchPath.size >= count)
+    val noNeed = foundRoute | (searchPath.size >= steps)
     !noNeed
   }
 

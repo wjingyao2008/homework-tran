@@ -10,7 +10,7 @@ class LessThanDistanceController(startStationName: String, endStationName: Strin
 
   override def keepTravel: Boolean = {
     val isLessThanMaxDistance = distanceNotExceed
-    if (currentStationIsEnd && isLessThanMaxDistance) {
+    if (hasReachedEndStation && isLessThanMaxDistance) {
       saveRoutes
     }
     isLessThanMaxDistance

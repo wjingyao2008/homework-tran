@@ -34,9 +34,9 @@ class ShortestDistanceController(startStationName: String, endStationName: Strin
     if (alreadyVisited)
       false
     else {
-      var isEndStation = currentStationIsEnd
+      val isEndStation = hasReachedEndStation
       if (isEndStation && distanceNotExceed) {
-        updateNewShortest
+        updateNewShortest()
         saveRoutes
       }
       !isEndStation
@@ -44,7 +44,7 @@ class ShortestDistanceController(startStationName: String, endStationName: Strin
   }
 
 
-  private def updateNewShortest: Unit = {
+  private def updateNewShortest() = {
     minimalDistance = sumSearchPathDistance
     validRoutes.clear()
   }

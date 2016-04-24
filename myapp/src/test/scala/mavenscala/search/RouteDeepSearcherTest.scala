@@ -21,6 +21,20 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
   service.addRoute("AE7")
 
 
+  test("given all controller,then Controller startName and endName shall be override") {
+
+    assertStartAndEndStationName(new DepthController("A", "B", 3))
+    assertStartAndEndStationName(new ExactStepController("A", "B", 3))
+    assertStartAndEndStationName(new LessThanDistanceController("A", "B", 3))
+    assertStartAndEndStationName(new ShortestDistanceController("A", "B"))
+  }
+
+  def assertStartAndEndStationName(controller: Controller) = {
+    controller.startStationName shouldBe "A"
+    controller.endStationName shouldBe "B"
+  }
+
+
   test("given search from C to C in the route,then the result will be get") {
     val strartRoute = service.getStation("C")
     val endRoute = service.getStation("C")

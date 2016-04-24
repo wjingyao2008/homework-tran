@@ -7,23 +7,15 @@ abstract class AbstractDistanceController(val startStationName: String, val endS
   def getControllingDistance: Int
 
   override def keepTravel: Boolean = {
-    var isEndStation = currentStationIsEnd
-    if (isEndStation && distanceNotExceed) {
+    var isEndStation = hasReachedEndStation
+    if (hasReachedEndStation && distanceNotExceed) {
       saveRoutes
     }
     !isEndStation
   }
 
 
-  protected def currentStationIsEnd = {
-    var isSame = false
-    if (searchPath.nonEmpty)
-      isSame = (endStationName == currentStationName)
-    isSame
-  }
-
   def distanceNotExceed: Boolean = sumSearchPathDistance < getControllingDistance
-
 
 
 }
