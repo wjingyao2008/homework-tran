@@ -1,5 +1,7 @@
 package mavenscala.railroad
 
+import java.util.NoSuchElementException
+
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -22,7 +24,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     val stationB = new SimpleStation("B")
     stationA.addRoute(stationB, 3)
     val routeC = new SimpleStation("C")
-    intercept[IllegalArgumentException] {
+    intercept[NoSuchElementException] {
       val distance = stationA.getDistanceFrom(Iterator("C"))
     }
   }

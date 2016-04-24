@@ -1,5 +1,7 @@
 package mavenscala
 
+import java.util.NoSuchElementException
+
 import mavenscala.railroad.{SimpleStation, Station}
 import mavenscala.search._
 import mavenscala.search.controlimpl.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
@@ -35,7 +37,7 @@ class RailroadService {
     try {
       rootStation.getDistanceFrom(stations).toString
     } catch {
-      case ex: IllegalArgumentException => "NO SUCH ROUTE"
+      case ex: NoSuchElementException => "NO SUCH ROUTE"
     }
   }
 
@@ -45,7 +47,7 @@ class RailroadService {
       runsearch(startStation, toStation, controller)
       controller.getValidRoutes.size.toString
     } catch {
-      case ex: IllegalArgumentException => "NO SUCH ROUTE"
+      case ex: NoSuchElementException => "NO SUCH ROUTE"
     }
   }
 
@@ -66,7 +68,7 @@ class RailroadService {
       runsearch(startName, toName, controller)
       controller.getValidRoutes.size.toString
     } catch {
-      case ex: IllegalArgumentException => "NO SUCH ROUTE"
+      case ex: NoSuchElementException => "NO SUCH ROUTE"
     }
   }
 
@@ -76,7 +78,7 @@ class RailroadService {
       runsearch(startName, toName, controller)
       controller.getControllingDistance.toString
     } catch {
-      case ex: IllegalArgumentException => "NO SUCH ROUTE"
+      case ex: NoSuchElementException => "NO SUCH ROUTE"
     }
   }
 
@@ -87,7 +89,7 @@ class RailroadService {
       runsearch(startName, toName, controller)
       controller.getValidRoutes.size.toString
     } catch {
-      case ex: IllegalArgumentException => "NO SUCH ROUTE"
+      case ex: NoSuchElementException => "NO SUCH ROUTE"
     }
   }
 

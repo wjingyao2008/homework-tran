@@ -21,7 +21,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
   service.addRoute("AE7")
 
 
-  test("given search from C to C in the route,the result will be get") {
+  test("given search from C to C in the route,then the result will be get") {
     val strartRoute = service.getStation("C")
     val endRoute = service.getStation("C")
     val controler = new DepthController(strartRoute.name, endRoute.name, 3)
@@ -31,7 +31,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
   }
 
 
-  test("given exact step 4,search all valid sequence") {
+  test("given exact step 4,then search all valid sequence") {
     val strartRoute = service.getStation("A")
     val endRoute = service.getStation("C")
     val controler = new ExactStepController(strartRoute.name, endRoute.name, 4)
@@ -41,7 +41,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
   }
 
 
-  test("given route A-C,search shortest length of sequence") {
+  test("given route A-C,then search shortest length of sequence will be A-B-C") {
     val startRoute = service.getStation("A")
     val endRoute = service.getStation("C")
     val controler = new ShortestDistanceController(startRoute.name, endRoute.name)

@@ -49,7 +49,7 @@ class SimpleStation(val stationName: String) extends Station {
   def getRoute(toStationName: String): Edge = {
     routesCanTravelTo.get(toStationName) match {
       case Some(edge) => edge
-      case None => throw new IllegalArgumentException(s"can't travel from $name to $toStationName")
+      case None => throw new NoSuchElementException(s"at $name ,there is no such $toStationName")
     }
   }
 
