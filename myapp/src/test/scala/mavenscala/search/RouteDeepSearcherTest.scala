@@ -21,15 +21,13 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
   service.addRoute("AE7")
 
 
-  test("testDfs") {
+  test("given search from C to C in the route,the result will be get") {
     val strartRoute = service.getStation("C")
     val endRoute = service.getStation("C")
-
     val controler = new DepthController(strartRoute.name, endRoute.name, 3)
-
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(strartRoute)
-    println(controler.getValidRoutes.mkString(","))
+    controler.getValidRoutes should equal (Array("C-E-B-C","C-D-C"))
   }
 
 
@@ -39,7 +37,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new ExactStepController(strartRoute.name, endRoute.name, 4)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(strartRoute)
-    println(controler.getValidRoutes.mkString(","))
+    controler.getValidRoutes should equal (Array("A-B-C-D-C","A-D-E-B-C","A-D-C-D-C"))
   }
 
 
@@ -49,7 +47,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new ShortestDistanceController(startRoute.name, endRoute.name)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(startRoute)
-    println(controler.getValidRoutes.mkString(","))
+    controler.getValidRoutes should equal (Array("A-B-C"))
     controler.getControllingDistance shouldBe 9
   }
 
@@ -60,7 +58,8 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new ShortestDistanceController(startRoute.name, endRoute.name)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(startRoute)
-    println(controler.getValidRoutes.mkString(","))
+
+    controler.getValidRoutes should equal (Array("B-C-E-B"))
     controler.getControllingDistance shouldBe 9
   }
 
@@ -70,7 +69,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new LessThanDistanceController(startRoute.name, endRoute.name, 30)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(startRoute)
-    println(controler.getValidRoutes.mkString(","))
+//    println(controler.getValidRoutes.mkString(","))
     controler.getValidRoutes.size shouldBe 7
   }
 }

@@ -2,9 +2,6 @@ package mavenscala.search.controlimpl
 
 import mavenscala.search.Controller
 
-/**
-  * Created by Administrator on 2016/4/23 0023.
-  */
 abstract class AbstractDistanceController(val startStaName: String, val stopStaName: String) extends Controller {
 
   def getControllingDistance: Int

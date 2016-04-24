@@ -25,7 +25,7 @@ abstract class Controller {
 
   def keepTravel: Boolean
 
-  def saveRoutes
+  def saveRoutes:Unit
 
   def getValidRoutes: Seq[String] = validRoutes
 

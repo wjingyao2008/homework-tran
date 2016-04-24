@@ -14,16 +14,13 @@ class SimpleStation(val stationName: String) extends Station {
   def getRouteOrUpdate(toStationName: String) = {
     canTravelToRouteMap.get(toStationName) match {
       case Some(edge) => edge
-      case None => {
-        val newStation = new SimpleStation(toStationName)
-        addRoute(newStation,0)
-      }
+      case None => addRoute(new SimpleStation(toStationName), 0)
     }
   }
 
   def addRoute(otherStation: Station, distance: Integer): Edge = {
     val otherStationName = otherStation.name
-    val newEdge=Edge(otherStation, distance)
+    val newEdge = Edge(otherStation, distance)
     canTravelToRouteMap += otherStationName -> newEdge
     newEdge
   }

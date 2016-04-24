@@ -1,7 +1,7 @@
 package mavenscala
 
-import mavenscala.search._
 import mavenscala.railroad.{SimpleStation, Station}
+import mavenscala.search._
 import mavenscala.search.controlimpl.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
 
 //import scala.collection.mutable.Map
