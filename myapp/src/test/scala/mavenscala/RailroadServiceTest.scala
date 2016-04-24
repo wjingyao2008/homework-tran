@@ -35,7 +35,7 @@ class RailroadServiceTest extends FunSuite with Matchers with BeforeAndAfterEach
   test("given service,then distance will be correct") {
     service.getDistance("A-D") shouldBe "5"
     service.getDistance("A-D-C") shouldBe "13"
-   service.getDistance("A-E-B-C-D") shouldBe "22"
+    service.getDistance("A-E-B-C-D") shouldBe "22"
   }
 
   test("given A-E-D,then other route sequence distance will be NO SUCH ROUTE") {

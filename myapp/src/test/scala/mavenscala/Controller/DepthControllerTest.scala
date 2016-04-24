@@ -10,14 +10,14 @@ import org.scalatest.FunSuite
 class DepthControllerTest extends FunSuite {
 
   test("given 5 search depth,then ") {
-    val deepControler=new DepthController("A","C",5)
-    deepControler.moveToNextRoute(Edge(new SimpleStation("A"),1))
-    deepControler.moveToNextRoute(Edge(new SimpleStation("B"),1))
-    deepControler.moveToNextRoute(Edge(new SimpleStation("C"),1))
+    val deepControler = new DepthController("A", "C", 5)
+    deepControler.moveToNext(Edge(new SimpleStation("A"), 1))
+    deepControler.moveToNext(Edge(new SimpleStation("B"), 1))
+    deepControler.moveToNext(Edge(new SimpleStation("C"), 1))
     deepControler.saveRoutes
     deepControler.moveBack()
     deepControler.saveRoutes
-    println(deepControler.getAllSeq.toString())
+    println(deepControler.getValidRoutes.toString())
 
   }
 

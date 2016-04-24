@@ -13,8 +13,8 @@ class RouteDeepSearcher(controler: Controller) {
       controler.moveBack()
       return
     }
-    for(edge<-currentRoute.allConnectedRoute.values){
-      controler.moveToNextRoute(edge)
+    for (edge <- currentRoute.allConnectedRoute.values) {
+      controler.moveToNext(edge)
       search(edge.toStation)
     }
     controler.moveBack()

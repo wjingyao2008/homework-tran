@@ -21,8 +21,8 @@ class SimpleStationTest extends FunSuite with Matchers {
     val routeA = new SimpleStation("A")
     val routeB = new SimpleStation("B")
     routeA.addRoute(routeB, 3)
-    val routeC= new SimpleStation("C")
-    intercept[IllegalArgumentException]{
+    val routeC = new SimpleStation("C")
+    intercept[IllegalArgumentException] {
       val distance = routeA.travelTo("C")
     }
   }
@@ -33,7 +33,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     val routeC = new SimpleStation("C")
     routeA.addRoute(routeB, 3)
     routeB.addRoute(routeC, 4)
-    val sequence=List("B","C")
+    val sequence = List("B", "C")
     val distance = routeA.getDistanceFrom(sequence.iterator)
     distance shouldBe 7
   }
@@ -44,16 +44,15 @@ class SimpleStationTest extends FunSuite with Matchers {
     val routeC = new SimpleStation("C")
     routeA.addRoute(routeB, 3)
     routeB.addRoute(routeC, 4)
-    val sequence=List("B")
+    val sequence = List("B")
     var distance = routeA.getDistanceFrom(sequence.iterator)
     distance shouldBe 3
 
-    val sequence2=List("C")
+    val sequence2 = List("C")
     distance = routeB.getDistanceFrom(sequence2.iterator)
     distance shouldBe 4
 
   }
-
 
 
 }

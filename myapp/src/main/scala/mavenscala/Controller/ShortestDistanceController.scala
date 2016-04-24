@@ -1,6 +1,6 @@
 package mavenscala.Controller
 
-import mavenscala.{Edge, Station}
+import mavenscala.Edge
 
 /**
   * Created by Administrator on 2016/4/23 0023.
@@ -13,8 +13,8 @@ class ShortestDistanceController(startRoute: String, endAtRoute: String) extends
 
   override def getControllingDistance: Int = minimalDistance
 
-  override def moveToNextRoute(route:Edge):Unit = {
-    super.moveToNextRoute(route)
+  override def moveToNext(route: Edge): Unit = {
+    super.moveToNext(route)
     val routeName = route.toStation.name
     if (routeSet.contains(routeName))
       alreadyVisited = true
@@ -38,8 +38,8 @@ class ShortestDistanceController(startRoute: String, endAtRoute: String) extends
 
 
   override def saveRoutes() = {
-    minimalDistance = sumCurrentSearchPathDistance
-    validSequence.clear()
+    minimalDistance = sumSearchPathDistance
+    validRoutes.clear()
     super.saveRoutes
   }
 

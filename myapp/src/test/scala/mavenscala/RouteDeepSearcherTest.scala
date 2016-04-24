@@ -28,7 +28,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
 
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(strartRoute)
-    println(controler.getAllSeq.mkString(","))
+    println(controler.getValidRoutes.mkString(","))
   }
 
 
@@ -38,7 +38,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new ExactStepController(strartRoute.name, endRoute.name, 4)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(strartRoute)
-    println(controler.getAllSeq.mkString(","))
+    println(controler.getValidRoutes.mkString(","))
   }
 
 
@@ -48,7 +48,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new ShortestDistanceController(startRoute.name, endRoute.name)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(startRoute)
-    println(controler.getAllSeq.mkString(","))
+    println(controler.getValidRoutes.mkString(","))
     controler.getControllingDistance shouldBe 9
   }
 
@@ -59,7 +59,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new ShortestDistanceController(startRoute.name, endRoute.name)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(startRoute)
-    println(controler.getAllSeq.mkString(","))
+    println(controler.getValidRoutes.mkString(","))
     controler.getControllingDistance shouldBe 9
   }
 
@@ -69,7 +69,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
     val controler = new LessThanDistanceController(startRoute.name, endRoute.name, 30)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(startRoute)
-    println(controler.getAllSeq.mkString(","))
-    controler.getAllSeq.size shouldBe 7
+    println(controler.getValidRoutes.mkString(","))
+    controler.getValidRoutes.size shouldBe 7
   }
 }

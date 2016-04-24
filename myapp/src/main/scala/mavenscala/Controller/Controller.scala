@@ -1,6 +1,6 @@
 package mavenscala.Controller
 
-import mavenscala.{Edge, Station}
+import mavenscala.Edge
 
 import scala.collection.mutable.{ArrayBuffer, Stack}
 
@@ -9,9 +9,9 @@ import scala.collection.mutable.{ArrayBuffer, Stack}
   */
 abstract class Controller {
   protected var searchPath = new Stack[Edge]
-  protected var validSequence = new ArrayBuffer[String]()
+  protected var validRoutes = new ArrayBuffer[String]()
 
-  def moveToNextRoute(edge:Edge): Unit = {
+  def moveToNext(edge: Edge): Unit = {
     searchPath.push(edge)
   }
 
@@ -21,15 +21,15 @@ abstract class Controller {
     }
   }
 
-  def topStackRouteName=searchPath.top.toStation.name
+  def currentStationName = searchPath.top.toStation.name
 
   def keepTravel: Boolean
 
   def saveRoutes
 
-  def getAllSeq: Seq[String] = validSequence
+  def getValidRoutes: Seq[String] = validRoutes
 
-  def sumCurrentSearchPathDistance: Int = {
+  def sumSearchPathDistance: Int = {
     searchPath.map(_.distance).sum
   }
 
