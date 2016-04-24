@@ -1,7 +1,7 @@
 package mavenscala.search
 
 import mavenscala.RailroadService
-import mavenscala.search.controlimpl.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
+import mavenscala.search.controlimpl.{ExactStepController, LessThanDistanceController, MaximumStepsController, ShortestDistanceController}
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -23,7 +23,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
 
   test("given all controller,then Controller startName and endName shall be override") {
 
-    assertStartAndEndStationName(new DepthController("A", "B", 3))
+    assertStartAndEndStationName(new MaximumStepsController("A", "B", 3))
     assertStartAndEndStationName(new ExactStepController("A", "B", 3))
     assertStartAndEndStationName(new LessThanDistanceController("A", "B", 3))
     assertStartAndEndStationName(new ShortestDistanceController("A", "B"))
@@ -38,7 +38,7 @@ class RouteDeepSearcherTest extends FunSuite with Matchers {
   test("given search from C to C in the route,then the result will be get") {
     val strartRoute = service.getStation("C")
     val endRoute = service.getStation("C")
-    val controler = new DepthController(strartRoute.name, endRoute.name, 3)
+    val controler = new MaximumStepsController(strartRoute.name, endRoute.name, 3)
     val searcher = new RouteDeepSearcher(controler)
     searcher.search(strartRoute)
     controler.getValidRoutes should equal (Array("C-E-B-C","C-D-C"))

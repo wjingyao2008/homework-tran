@@ -37,7 +37,7 @@ abstract class Controller {
 
   protected def hasReachedEndStation = searchPath.nonEmpty && (endStationName == currentStationName)
 
-  def currentStationName = searchPath.top.toStation.name
+  private def currentStationName = searchPath.top.toStation.name
 
   protected def sumSearchPathDistance: Int = {
     searchPath.map(_.distance).sum

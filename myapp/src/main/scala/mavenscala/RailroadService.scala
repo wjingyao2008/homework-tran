@@ -4,7 +4,7 @@ import java.util.NoSuchElementException
 
 import mavenscala.railroad.{SimpleStation, Station}
 import mavenscala.search._
-import mavenscala.search.controlimpl.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
+import mavenscala.search.controlimpl.{ExactStepController, LessThanDistanceController, MaximumStepsController, ShortestDistanceController}
 
 /**
   * Created by Administrator on 2016/4/23 0023.
@@ -43,7 +43,7 @@ class RailroadService {
 
   def getTripNumberInMaximumStops(startStation: String, toStation: String, maxStops: Int): String = {
     try {
-      val controller = new DepthController(startStation, toStation, maxStops)
+      val controller = new MaximumStepsController(startStation, toStation, maxStops)
       runsearch(startStation, toStation, controller)
       controller.getValidRoutes.size.toString
     } catch {
