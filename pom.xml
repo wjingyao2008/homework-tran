@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--<parent>-->
-        <!--<groupId>com.nsn.oss</groupId>-->
-        <!--<artifactId>nbi</artifactId>-->
-        <!--<version>DYNAMIC-SNAPSHOT</version>-->
-    <!--</parent>-->
     <groupId>com.yang.myscalamaven</groupId>
     <artifactId>myscalamaven</artifactId>
     <packaging>pom</packaging>
@@ -30,43 +25,7 @@
         <powermock-version>1.6.2</powermock-version>
         <commons-lang-version>2.4</commons-lang-version>
     </properties>
-    <repositories>
-        <!--<repository>-->
-        <!--<id>nexus</id>-->
-        <!--<name>local private nexus</name>-->
-        <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
-        <!--<releases>-->
-        <!--<enabled>true</enabled>-->
-        <!--</releases>-->
-        <repository>
-            <id>UK</id>
-            <name>UK Central</name>
-            <url>http://uk.maven.org/maven2</url>
-        </repository>
-        <!--<snapshots>-->
-        <!--<enabled>false</enabled>-->
-        <!--</snapshots>-->
-        <!--</repository>-->
 
-        <!--<repository>-->
-        <!--<id>central</id>-->
-        <!--<url>http://repo1.maven.org/maven2</url>-->
-        <!--</repository>-->
-    </repositories>
-
-    <!--<pluginRepositories>-->
-    <!--<pluginRepository>-->
-    <!--<id>nexus</id>-->
-    <!--<name>local private nexus</name>-->
-    <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
-    <!--<releases>-->
-    <!--<enabled>true</enabled>-->
-    <!--</releases>-->
-    <!--<snapshots>-->
-    <!--<enabled>false</enabled>-->
-    <!--</snapshots>-->
-    <!--</pluginRepository>-->
-    <!--</pluginRepositories>-->
     <dependencies>
 
         <dependency>
@@ -82,12 +41,7 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.specs2</groupId>-->
-        <!--<artifactId>specs2_${scala.tools.version}</artifactId>-->
-        <!--<version>3.2</version>-->
-        <!--<scope>test</scope>-->
-        <!--</dependency>-->
+
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala.tools.version}</artifactId>
@@ -151,18 +105,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>compile</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>compile</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest-maven-plugin</artifactId>
