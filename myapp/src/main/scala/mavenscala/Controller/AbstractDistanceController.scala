@@ -12,9 +12,7 @@ abstract class AbstractDistanceController(val startStaName: String, val stopStaN
     if (isDestination && distanceNotExceed) {
       saveRoutes
     }
-
-    val noNeed = isDestination
-    !noNeed
+    !isDestination
   }
 
 

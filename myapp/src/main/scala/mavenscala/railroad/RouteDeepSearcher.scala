@@ -1,4 +1,4 @@
-package mavenscala
+package mavenscala.railroad
 
 import mavenscala.Controller.Controller
 
@@ -8,12 +8,12 @@ import mavenscala.Controller.Controller
 class RouteDeepSearcher(controler: Controller) {
 
 
-  def search(currentRoute: Station): Unit = {
+  def search(currentStation: Station): Unit = {
     if (!controler.keepTravel) {
       controler.moveBack()
       return
     }
-    for (edge <- currentRoute.allConnectedRoute.values) {
+    for (edge <- currentStation.allConnectedRoute.values) {
       controler.moveToNext(edge)
       search(edge.toStation)
     }

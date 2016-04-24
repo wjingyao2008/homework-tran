@@ -1,6 +1,7 @@
-package mavenscala
+package mavenscala.railroad
 
 import mavenscala.Controller.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
+import mavenscala.RailroadService
 import org.scalatest.{FunSuite, Matchers}
 
 /**

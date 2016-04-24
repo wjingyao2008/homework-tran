@@ -1,6 +1,6 @@
 package mavenscala.Controller
 
-import mavenscala.Edge
+import mavenscala.railroad.Edge
 
 import scala.collection.mutable.{ArrayBuffer, Stack}
 

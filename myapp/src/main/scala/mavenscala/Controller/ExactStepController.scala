@@ -3,12 +3,12 @@ package mavenscala.Controller
 /**
   * Created by Administrator on 2016/4/23 0023.
   */
-class ExactStepController(startRoute: String, endAtRoute: String, count: Int) extends DepthController(startRoute, endAtRoute, count) {
+class ExactStepController(startStationName: String, endStationName: String, count: Int) extends DepthController(startStationName, endStationName, count) {
 
   override def keepTravel: Boolean = {
     var found = false
     if (searchPath.nonEmpty)
-      found = (endAtRoute == currentStationName) && (searchPath.size == count)
+      found = (endStationName == currentStationName) && (searchPath.size == count)
     if (found)
       saveRoutes
     val noNeed = found | (searchPath.size >= count)

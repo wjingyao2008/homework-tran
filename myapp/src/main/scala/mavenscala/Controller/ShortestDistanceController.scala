@@ -1,31 +1,31 @@
 package mavenscala.Controller
 
-import mavenscala.Edge
+import mavenscala.railroad.Edge
 
 /**
   * Created by Administrator on 2016/4/23 0023.
   */
-class ShortestDistanceController(startRoute: String, endAtRoute: String) extends AbstractDistanceController(startRoute, endAtRoute) {
+class ShortestDistanceController(startStationName: String, endStationName: String) extends AbstractDistanceController(startStationName, endStationName) {
 
-  private var routeSet = Set[String]()
+  private var visitedStationRecorder = Set[String]()
   private var alreadyVisited = false
   private var minimalDistance = Int.MaxValue
 
   override def getControllingDistance: Int = minimalDistance
 
-  override def moveToNext(route: Edge): Unit = {
-    super.moveToNext(route)
-    val routeName = route.toStation.name
-    if (routeSet.contains(routeName))
+  override def moveToNext(edge: Edge): Unit = {
+    super.moveToNext(edge)
+    val routeName = edge.toStation.name
+    if (visitedStationRecorder.contains(routeName))
       alreadyVisited = true
     else
-      routeSet += routeName
+      visitedStationRecorder += routeName
   }
 
   override def moveBack() = {
     if (searchPath.nonEmpty) {
-      val poped = searchPath.pop()
-      routeSet.-=(poped.toStation.name)
+      val popped = searchPath.pop()
+      visitedStationRecorder.-=(popped.toStation.name)
       alreadyVisited = false
     }
   }

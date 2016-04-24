@@ -1,6 +1,7 @@
 package mavenscala
 
 import mavenscala.Controller._
+import mavenscala.railroad.{RouteDeepSearcher, SimpleStation, Station}
 
 //import scala.collection.mutable.Map
 /**
@@ -8,7 +9,7 @@ import mavenscala.Controller._
   */
 class RailroadService {
 
-  private var rootStation = new SimpleStation("root")
+  private val rootStation = new SimpleStation("root")
 
   def addRoute(represent: String): Unit = {
     if (represent.length != 3)
@@ -25,8 +26,8 @@ class RailroadService {
     fromStation.addRoute(toStation, distance)
   }
 
-  private def getOrCreatStation(routName: String): Station = {
-    rootStation.getRouteOrUpdate(routName).toStation
+  private def getOrCreatStation(stationName: String): Station = {
+    rootStation.getRouteOrUpdate(stationName).toStation
   }
 
   def getDistance(routeSequeceStr: String): String = {
