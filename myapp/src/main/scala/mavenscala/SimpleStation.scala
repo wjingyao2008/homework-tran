@@ -47,14 +47,14 @@ class SimpleStation(val theRouteName: String) extends Station {
   }
 
 
-  def travelThroughSeq(iterator: Iterator[String]): Int = {
+  def getDistanceFrom(iterator: Iterator[String]): Int = {
     var distanceTotal = 0
     if (iterator.hasNext) {
       val nextRoute = iterator.next()
       distanceTotal = travelTo(nextRoute)
       canTravelToRouteMap.get(nextRoute) match {
         case Some(Edge(station, distance)) => {
-          val nextTravelDistance = station.travelThroughSeq(iterator)
+          val nextTravelDistance = station.getDistanceFrom(iterator)
           distanceTotal += nextTravelDistance
         }
         case None =>

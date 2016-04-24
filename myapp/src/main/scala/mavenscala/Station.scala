@@ -11,7 +11,7 @@ trait Station {
 
   def travelTo(toStationName:String):Int
 
-  def travelThroughSeq(stationIterator:Iterator[String]):Int
+  def getDistanceFrom(stationIterator:Iterator[String]):Int
 
   def addRoute(station:Station, distance: Integer)
 
