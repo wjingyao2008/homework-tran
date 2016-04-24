@@ -7,32 +7,32 @@ import scala.collection.immutable.HashMap
   */
 class SimpleStation(val stationName: String) extends Station {
 
-  private var canTravelToRouteMap = new HashMap[String, Edge]
+  private var routesCanTravelTo = new HashMap[String, Edge]
 
-  override def allConnectedRoute: Map[String, Edge] = canTravelToRouteMap
+  override def allConnectedRoute: Map[String, Edge] = routesCanTravelTo
 
   def getRouteOrUpdate(toStationName: String) = {
-    canTravelToRouteMap.get(toStationName) match {
+    routesCanTravelTo.get(toStationName) match {
       case Some(edge) => edge
       case None => addRoute(new SimpleStation(toStationName), 0)
     }
   }
 
   def addRoute(otherStation: Station, distance: Integer): Edge = {
-    val otherStationName = otherStation.name
+    val otherName = otherStation.name
     val newEdge = Edge(otherStation, distance)
-    canTravelToRouteMap += otherStationName -> newEdge
+    routesCanTravelTo += otherName -> newEdge
     newEdge
   }
 
-  def getDistanceFrom(iterator: Iterator[String]): Int = {
+  def getDistanceFrom(stationIterator: Iterator[String]): Int = {
     var distanceTotal = 0
-    if (iterator.hasNext) {
-      val nextStationName = iterator.next()
+    if (stationIterator.hasNext) {
+      val nextStationName = stationIterator.next()
       distanceTotal = travelTo(nextStationName)
-      canTravelToRouteMap.get(nextStationName) match {
+      routesCanTravelTo.get(nextStationName) match {
         case Some(Edge(nextStation, distance)) => {
-          val nextTravelDistance = nextStation.getDistanceFrom(iterator)
+          val nextTravelDistance = nextStation.getDistanceFrom(stationIterator)
           distanceTotal += nextTravelDistance
         }
         case None =>
@@ -41,12 +41,12 @@ class SimpleStation(val stationName: String) extends Station {
     distanceTotal
   }
 
-  override def travelTo(toRoute: String): Int = {
-    getRoute(toRoute).distance
+  override def travelTo(toStationName: String): Int = {
+    getRoute(toStationName).distance
   }
 
   def getRoute(toStationName: String): Edge = {
-    canTravelToRouteMap.get(toStationName) match {
+    routesCanTravelTo.get(toStationName) match {
       case Some(edge) => edge
       case None => throw new IllegalArgumentException(s"can't travel from $name to $toStationName")
     }

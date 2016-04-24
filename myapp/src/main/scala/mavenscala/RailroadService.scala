@@ -4,7 +4,6 @@ import mavenscala.railroad.{SimpleStation, Station}
 import mavenscala.search._
 import mavenscala.search.controlimpl.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
 
-//import scala.collection.mutable.Map
 /**
   * Created by Administrator on 2016/4/23 0023.
   */
@@ -31,8 +30,8 @@ class RailroadService {
     rootStation.getRouteOrUpdate(stationName).toStation
   }
 
-  def getDistance(routeSequeceStr: String): String = {
-    val stations = routeSequeceStr.split("-").iterator
+  def getDistance(routeStr: String): String = {
+    val stations = routeStr.split("-").iterator
     try {
       rootStation.getDistanceFrom(stations).toString
     } catch {
@@ -51,13 +50,13 @@ class RailroadService {
   }
 
   private def runsearch(startStationName: String, toStationName: String, controller: Controller) = {
-    val startStation = checkRouteExist(startStationName)
-    checkRouteExist(toStationName)
+    val startStation = checkStationExist(startStationName)
+    checkStationExist(toStationName)
     val searcher = new RouteDeepSearcher(controller)
     searcher.search(startStation)
   }
 
-  private def checkRouteExist(stationName: String): Station = this.getStation(stationName)
+  private def checkStationExist(stationName: String): Station = this.getStation(stationName)
 
   def getStation(routeName: String) = rootStation.getRoute(routeName).toStation
 
