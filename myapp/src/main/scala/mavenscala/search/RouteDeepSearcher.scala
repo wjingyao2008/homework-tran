@@ -1,6 +1,6 @@
-package mavenscala.railroad
+package mavenscala.search
 
-import mavenscala.Controller.Controller
+import mavenscala.railroad.Station
 
 /**
   * Created by Administrator on 2016/4/23 0023.

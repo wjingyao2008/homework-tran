@@ -1,7 +1,7 @@
-package mavenscala.railroad
+package mavenscala.search
 
-import mavenscala.Controller.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
 import mavenscala.RailroadService
+import mavenscala.search.controlimpl.{DepthController, ExactStepController, LessThanDistanceController, ShortestDistanceController}
 import org.scalatest.{FunSuite, Matchers}
 
 /**

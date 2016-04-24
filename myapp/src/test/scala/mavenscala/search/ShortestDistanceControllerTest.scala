@@ -1,6 +1,7 @@
-package mavenscala.Controller
+package mavenscala.search
 
 import mavenscala.railroad.{Edge, SimpleStation}
+import mavenscala.search.controlimpl.ShortestDistanceController
 import org.scalatest.{FunSuite, Matchers}
 
 /**

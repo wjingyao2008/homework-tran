@@ -1,4 +1,4 @@
-package mavenscala.Controller
+package mavenscala.search.controlimpl
 
 import mavenscala.railroad.Edge
 
