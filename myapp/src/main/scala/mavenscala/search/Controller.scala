@@ -11,6 +11,7 @@ abstract class Controller {
   protected var searchPath = new scala.collection.mutable.Stack[Edge]()
   protected var validRoutes = new ArrayBuffer[String]()
 
+
   def moveToNext(edge: Edge): Unit = {
     searchPath.push(edge)
   }
@@ -23,17 +24,18 @@ abstract class Controller {
 
   def keepTravel: Boolean
 
-  def saveRoutes = {
-    val path = searchPath.map(_.toStation.name).reverse.mkString("-")
-    val str = s"$startStationName-$path"
-    validRoutes += str
-  }
 
   def getValidRoutes: Seq[String] = validRoutes
 
   def startStationName: String
 
   def endStationName: String
+
+  protected def saveRoutes = {
+    val path = searchPath.map(_.toStation.name).reverse.push(startStationName).mkString("-")
+    validRoutes += path
+  }
+
 
   protected def hasReachedEndStation = searchPath.nonEmpty && (endStationName == currentStationName)
 
