@@ -35,7 +35,7 @@ class RailroadService {
   def getDistance(routeStr: String): String = {
     val stations = routeStr.split("-").iterator
     try {
-      rootStation.getDistanceFrom(stations).toString
+      rootStation.getDistanceBy(stations).toString
     } catch {
       case ex: NoSuchElementException => "NO SUCH ROUTE"
     }

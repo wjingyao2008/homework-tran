@@ -33,15 +33,19 @@ class ShortestDistanceController(startStationName: String, endStationName: Strin
   override def keepTravel: Boolean = {
     if (alreadyVisited)
       false
-    else super.keepTravel
+    else {
+      var isEndStation = currentStationIsEnd
+      if (isEndStation && distanceNotExceed) {
+        updateNewShortest
+        saveRoutes
+      }
+      !isEndStation
+    }
   }
 
 
-  override def saveRoutes: Unit = {
+  private def updateNewShortest: Unit = {
     minimalDistance = sumSearchPathDistance
     validRoutes.clear()
-    super.saveRoutes
   }
-
-
 }

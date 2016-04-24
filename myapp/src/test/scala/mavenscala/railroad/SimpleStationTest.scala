@@ -15,7 +15,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     val stationB = new SimpleStation("B")
     stationA.addRoute(stationB, 3)
 
-    val distance = stationA.getDistanceFrom(Iterator("B"))
+    val distance = stationA.getDistanceBy(Iterator("B"))
     distance shouldBe 3
   }
 
@@ -25,7 +25,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     stationA.addRoute(stationB, 3)
     val routeC = new SimpleStation("C")
     intercept[NoSuchElementException] {
-      val distance = stationA.getDistanceFrom(Iterator("C"))
+      val distance = stationA.getDistanceBy(Iterator("C"))
     }
   }
 
@@ -35,7 +35,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     val routeC = new SimpleStation("C")
     stationA.addRoute(stationB, 3)
     stationB.addRoute(routeC, 4)
-    val distance = stationA.getDistanceFrom(Iterator("B", "C"))
+    val distance = stationA.getDistanceBy(Iterator("B", "C"))
     distance shouldBe 7
   }
 
@@ -48,10 +48,10 @@ class SimpleStationTest extends FunSuite with Matchers {
     stationRoot.addRoute(stationB, 0)
     stationA.addRoute(stationB, 3)
     stationB.addRoute(routeC, 4)
-    var distance = stationRoot.getDistanceFrom(Iterator("A", "B"))
+    var distance = stationRoot.getDistanceBy(Iterator("A", "B"))
     distance shouldBe 3
 
-    distance = stationRoot.getDistanceFrom(Iterator("B", "C"))
+    distance = stationRoot.getDistanceBy(Iterator("B", "C"))
     distance shouldBe 4
 
   }

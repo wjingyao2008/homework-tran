@@ -25,11 +25,17 @@ abstract class Controller {
 
   def keepTravel: Boolean
 
-  def saveRoutes:Unit
+  def saveRoutes: Unit = {
+    val path = searchPath.map(_.toStation.name).reverse.mkString("-")
+    val str = s"$startStationName-$path"
+    validRoutes += str
+  }
 
   def getValidRoutes: Seq[String] = validRoutes
 
-  def sumSearchPathDistance: Int = {
+  def startStationName(): String
+
+  protected def sumSearchPathDistance: Int = {
     searchPath.map(_.distance).sum
   }
 

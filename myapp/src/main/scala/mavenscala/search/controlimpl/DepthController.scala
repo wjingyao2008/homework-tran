@@ -19,11 +19,6 @@ class DepthController(val startStationName: String, val endStationName: String, 
     !noNeedTravel
   }
 
-  override def saveRoutes: Unit = {
-    val path = searchPath.map(_.toStation.name).reverse.mkString("-")
-    val str = s"$startStationName-$path"
-    validRoutes += str
-  }
 
 
 }

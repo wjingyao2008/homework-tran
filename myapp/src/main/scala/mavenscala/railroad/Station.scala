@@ -10,7 +10,7 @@ trait Station {
   def name: String
 
   @throws(classOf[NoSuchElementException])
-  def getDistanceFrom(stationIterator: Iterator[String]): Int
+  def getDistanceBy(stationIterator: Iterator[String]): Int
 
   def addRoute(station: Station, distance: Integer): Edge
 

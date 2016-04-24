@@ -25,7 +25,7 @@ class SimpleStation(val stationName: String) extends Station {
     newEdge
   }
 
-  def getDistanceFrom(stationIterator: Iterator[String]): Int = {
+  def getDistanceBy(stationIterator: Iterator[String]): Int = {
     var distanceTotal = 0
     if (stationIterator.hasNext) {
       val nextStationName = stationIterator.next()
@@ -33,7 +33,7 @@ class SimpleStation(val stationName: String) extends Station {
       routesCanTravelTo.get(nextStationName) match {
 
         case Some(Edge(nextStation, distance)) =>
-          val nextTravelDistance = nextStation.getDistanceFrom(stationIterator)
+          val nextTravelDistance = nextStation.getDistanceBy(stationIterator)
           distanceTotal += nextTravelDistance
 
         case None =>
