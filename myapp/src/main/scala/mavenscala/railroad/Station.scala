@@ -7,12 +7,13 @@ trait Station {
 
   def name: String
 
-  def travelTo(toStationName: String): Int
-
+  @throws(classOf[IllegalArgumentException])
   def getDistanceFrom(stationIterator: Iterator[String]): Int
 
   def addRoute(station: Station, distance: Integer): Edge
 
   def allConnectedRoute: Map[String, Edge]
+
+  protected def tryTravelTo(toStationName: String): Int
 
 }

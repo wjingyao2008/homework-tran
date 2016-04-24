@@ -13,7 +13,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     val stationB = new SimpleStation("B")
     stationA.addRoute(stationB, 3)
 
-    val distance = stationA.travelTo("B")
+    val distance = stationA.getDistanceFrom(Iterator("B"))
     distance shouldBe 3
   }
 
@@ -23,7 +23,7 @@ class SimpleStationTest extends FunSuite with Matchers {
     stationA.addRoute(stationB, 3)
     val routeC = new SimpleStation("C")
     intercept[IllegalArgumentException] {
-      val distance = stationA.travelTo("C")
+      val distance = stationA.getDistanceFrom(Iterator("C"))
     }
   }
 
@@ -33,23 +33,23 @@ class SimpleStationTest extends FunSuite with Matchers {
     val routeC = new SimpleStation("C")
     stationA.addRoute(stationB, 3)
     stationB.addRoute(routeC, 4)
-    val sequence = List("B", "C")
-    val distance = stationA.getDistanceFrom(sequence.iterator)
+    val distance = stationA.getDistanceFrom(Iterator("B", "C"))
     distance shouldBe 7
   }
 
   test("given a route AB3,BC4,then travel from A to B will be 3,B to C will be 4") {
+    val stationRoot = new SimpleStation("root")
     val stationA = new SimpleStation("A")
     val stationB = new SimpleStation("B")
     val routeC = new SimpleStation("C")
+    stationRoot.addRoute(stationA, 0)
+    stationRoot.addRoute(stationB, 0)
     stationA.addRoute(stationB, 3)
     stationB.addRoute(routeC, 4)
-    val sequence = List("B")
-    var distance = stationA.getDistanceFrom(sequence.iterator)
+    var distance = stationRoot.getDistanceFrom(Iterator("A", "B"))
     distance shouldBe 3
 
-    val sequence2 = List("C")
-    distance = stationB.getDistanceFrom(sequence2.iterator)
+    distance = stationRoot.getDistanceFrom(Iterator("B", "C"))
     distance shouldBe 4
 
   }

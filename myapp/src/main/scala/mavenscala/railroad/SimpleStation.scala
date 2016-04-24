@@ -29,19 +29,20 @@ class SimpleStation(val stationName: String) extends Station {
     var distanceTotal = 0
     if (stationIterator.hasNext) {
       val nextStationName = stationIterator.next()
-      distanceTotal = travelTo(nextStationName)
+      distanceTotal = tryTravelTo(nextStationName)
       routesCanTravelTo.get(nextStationName) match {
-        case Some(Edge(nextStation, distance)) => {
+
+        case Some(Edge(nextStation, distance)) =>
           val nextTravelDistance = nextStation.getDistanceFrom(stationIterator)
           distanceTotal += nextTravelDistance
-        }
+
         case None =>
       }
     }
     distanceTotal
   }
 
-  override def travelTo(toStationName: String): Int = {
+  override def tryTravelTo(toStationName: String): Int = {
     getRoute(toStationName).distance
   }
 
