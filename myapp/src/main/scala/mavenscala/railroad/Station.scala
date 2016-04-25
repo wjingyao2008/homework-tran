@@ -13,7 +13,4 @@ trait Station {
 
   def allConnectedRoute: Map[String, Edge]
 
-  @throws(classOf[NoSuchElementException])
-  def getRoute(toStationName: String): Edge
-
 }
