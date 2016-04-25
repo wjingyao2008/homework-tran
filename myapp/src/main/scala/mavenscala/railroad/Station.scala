@@ -9,8 +9,9 @@ trait Station {
 
   def name: String
 
-  def addRoute(station: Station, distance: Integer): Edge
+  def addRoute(station: Station, distance: Int): Edge
 
   def allConnectedRoute: Map[String, Edge]
 
+  def getRouteOrUpdate(toStationName: String):Edge
 }
