@@ -180,6 +180,73 @@ class RouteIteratorTest extends FunSuite with Matchers{
 
 
 
+  test("test single node,should has no next") {
+    val rootStation = new SimpleStation("root")
+
+    val iterator=new RouteIterator(rootStation)
+
+    iterator.hasNext shouldBe false
+  }
+
+
+
+  test("test root-A,should has A") {
+    val rootStation = new SimpleStation("root")
+
+    val iterator=new RouteIterator(rootStation)
+    val a = new SimpleStation("A")
+    rootStation.addRoute(a,3)
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "A"
+  }
+
+
+
+
+
+  test("test A-B, drop at B, then the at B,then there will be no route anymore") {
+    val rootStation = new SimpleStation("root")
+    val a = new SimpleStation("A")
+    rootStation.addRoute(a,3)
+
+    val iterator=new RouteIterator(rootStation)
+
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "A"
+
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "A-B"
+
+    iterator.dropCurrentStation
+    iterator.hasNext shouldBe false
+  }
+
+
+  test("test A-B and A-C,when drop at B,then there will still have A-C") {
+    val rootStation = new SimpleStation("root")
+    val a = new SimpleStation("A")
+    val b = new SimpleStation("B")
+    val c = new SimpleStation("C")
+    rootStation.addRoute(a,3)
+    rootStation.addRoute(b,3)
+    rootStation.addRoute(c,3)
+    a.addRoute(b,4)
+    a.addRoute(c,4)
+
+    val iterator=new RouteIterator(rootStation)
+
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "A"
+
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "A-B"
+    iterator.dropCurrentStation
+
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "A-C"
+
+  }
+
 
 
 }
