@@ -52,16 +52,28 @@ class RailroadServiceTest extends FunSuite with Matchers with BeforeAndAfterEach
   }
 
   test("given unknown end route F,then the result will be NO SUCH ROUTE") {
-    service.getTripNumberInMaximumStops("C", "F", 1) shouldBe "NO SUCH ROUTE"
+    service.getTripNumberInMaximumStops("C", "F", 1) shouldBe "0"
   }
 
   test("given unknown start route F ,then the result will be NO SUCH ROUTE") {
-    service.getTripNumberInMaximumStops("F", "A", 1) shouldBe "NO SUCH ROUTE"
+    service.getTripNumberInMaximumStops("F", "A", 1) shouldBe "0"
   }
 
   test("given start from A to C ,then the shortest distance will be 9") {
     service.getShortestDistanceBetween("A", "C") shouldBe "9"
   }
+
+
+  test("given start from A to C with exact stops,then the number of tripe will be 3") {
+    service.getTripNumberInExactStops("A", "C",4) shouldBe "3"
+  }
+
+  test("given start from A to A with exact stops,then the number of tripe will be 0") {
+    service.getTripNumberInExactStops("A", "A",4) shouldBe "0"
+  }
+
+
+
 
   test("given start from B to B ,then the shortest distance will be 9") {
     service.getShortestDistanceBetween("B", "B") shouldBe "9"
