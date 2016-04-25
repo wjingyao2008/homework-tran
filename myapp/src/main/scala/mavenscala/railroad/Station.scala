@@ -9,9 +9,6 @@ trait Station {
 
   def name: String
 
-  @throws(classOf[NoSuchElementException])
-  def getDistanceBy(stationIterator: Iterator[String]): Int
-
   def addRoute(station: Station, distance: Integer): Edge
 
   def allConnectedRoute: Map[String, Edge]
@@ -19,5 +16,4 @@ trait Station {
   @throws(classOf[NoSuchElementException])
   def getRoute(toStationName: String): Edge
 
-  protected def tryTravelTo(toStationName: String): Int
 }
