@@ -25,7 +25,7 @@ class RouteIteratorTest extends FunSuite with Matchers{
   b.addRoute(c,4)
   aStation.addRoute(d,6)
 
-  test("given the route,all route path can be iterated") {
+  test("given the route,all route A,A-B,A-B-C,A-D can be iterated") {
 
     val iterator=new RouteIterator(rootStation)
     iterator.hasNext shouldBe true
@@ -41,7 +41,7 @@ class RouteIteratorTest extends FunSuite with Matchers{
 
   def toString(iterator: RouteIterator)=iterator.next.map(_.toStation.name).mkString("-")
 
-  test("two branch") {
+  test("two branch,can verify A-B,A-C,A,B,C") {
     val service = new RailroadService
     service.addRoute("AB5")
     service.addRoute("AC4")
@@ -76,7 +76,7 @@ class RouteIteratorTest extends FunSuite with Matchers{
   }
 
 
-  test("two branch, one long ,one short,") {
+  test("two branch A-B,A-C-D,can be iterated") {
     val service = new RailroadService
     service.addRoute("AB5")
     service.addRoute("AC4")
@@ -141,7 +141,7 @@ class RouteIteratorTest extends FunSuite with Matchers{
     iterator.hasNext shouldBe false
   }
 
-  test("two branch A-B,drop at first next,then other route can be found") {
+  test("two branch A-B,drop at A,then other route can be found") {
     val service = new RailroadService
     service.addRoute("AB5")
 
@@ -158,7 +158,7 @@ class RouteIteratorTest extends FunSuite with Matchers{
     iterator.hasNext shouldBe false
   }
 
-  test("two branch A-B,drop at last next,then other route can be found") {
+  test("two branch A-B,drop at A-B,then still have route 'B'") {
     val service = new RailroadService
     service.addRoute("AB5")
 
@@ -180,7 +180,7 @@ class RouteIteratorTest extends FunSuite with Matchers{
 
 
 
-  test("test single node,should has no next") {
+  test("test single root node,should has no next") {
     val rootStation = new SimpleStation("root")
 
     val iterator=new RouteIterator(rootStation)
@@ -192,10 +192,10 @@ class RouteIteratorTest extends FunSuite with Matchers{
 
   test("test root-A,should has A") {
     val rootStation = new SimpleStation("root")
-
-    val iterator=new RouteIterator(rootStation)
     val a = new SimpleStation("A")
     rootStation.addRoute(a,3)
+
+    val iterator=new RouteIterator(rootStation)
     iterator.hasNext shouldBe true
     toString(iterator) shouldBe "A"
   }
@@ -204,10 +204,13 @@ class RouteIteratorTest extends FunSuite with Matchers{
 
 
 
-  test("test A-B, drop at B, then the at B,then there will be no route anymore") {
+  test("test A-B, drop at B, then there will be no route anymore") {
     val rootStation = new SimpleStation("root")
     val a = new SimpleStation("A")
+    val b = new SimpleStation("B")
     rootStation.addRoute(a,3)
+    rootStation.addRoute(b,3)
+    a.addRoute(b,3)
 
     val iterator=new RouteIterator(rootStation)
 
@@ -218,6 +221,9 @@ class RouteIteratorTest extends FunSuite with Matchers{
     toString(iterator) shouldBe "A-B"
 
     iterator.dropCurrentStation
+    iterator.hasNext shouldBe true
+    toString(iterator) shouldBe "B"
+
     iterator.hasNext shouldBe false
   }
 
