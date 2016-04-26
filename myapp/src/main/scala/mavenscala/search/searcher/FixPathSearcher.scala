@@ -7,7 +7,7 @@ import mavenscala.search.RouteIterator
   */
 class FixPathSearcher(val path:String) extends Searcher{
 
-  val stations=path.split("-")
+   val stations=path.split("-")
 
   override def search(iterator: RouteIterator): String = {
     while (iterator.hasNext){
