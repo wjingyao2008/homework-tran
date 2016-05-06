@@ -18,7 +18,6 @@ class ShortestDistanceSearcher(val startName: String,
       val route = iterator.next
 
       if (route.head.toStation.name != startName) {
-        val name = route.head.toStation.name
         iterator.dropCurrentStation
       }
       else if ((route.size > 1)){
