@@ -3,6 +3,7 @@ package mavenscala
 import mavenscala.railroad.{SimpleStation, Station}
 import mavenscala.search._
 import mavenscala.search.searcher._
+import mavenscala.search.searcher.calculator.{DistanceCalculator, DurationCalculator}
 import mavenscala.search.searcher.controller.{ExactStepsController, MaximumStepsController}
 
 /**
@@ -33,12 +34,12 @@ class RailroadService {
   }
 
   def getDistance(routeStr: String): String = {
-    val searcher = new FixPathDistanceSearcher(routeStr)
+    val searcher = new FixPathSearcher(routeStr,new DistanceCalculator)
     useSearcher(searcher)
   }
 
   def getDuration(routeStr: String): String = {
-    val searcher = new FixPathDurationSearcher(routeStr)
+    val searcher = new FixPathSearcher(routeStr,new DurationCalculator)
     useSearcher(searcher)
   }
 

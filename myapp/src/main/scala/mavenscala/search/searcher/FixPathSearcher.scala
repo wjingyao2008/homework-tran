@@ -2,10 +2,11 @@ package mavenscala.search.searcher
 
 import mavenscala.railroad.Edge
 import mavenscala.search.RouteIterator
+import mavenscala.search.searcher.calculator.RouteCalculator
 /**
   * Created by y28yang on 4/25/2016.
   */
-abstract class FixPathSearcher(val path:String) extends Searcher{
+class FixPathSearcher(val path:String,resultGetter:RouteCalculator) extends Searcher{
 
    val stations=path.split("-")
 
@@ -18,7 +19,7 @@ abstract class FixPathSearcher(val path:String) extends Searcher{
         iterator.dropCurrentStation
       }else{
         if(route.size==stations.length) {
-            return getResult(route)
+            return resultGetter.getResult(route)
           }
       }
     }
@@ -26,7 +27,6 @@ abstract class FixPathSearcher(val path:String) extends Searcher{
     return "NO SUCH ROUTE"
   }
 
-  def getResult(route: Seq[Edge]): String
 
   def isLastNameSameWithPredict(route: Seq[Edge]): Boolean = {
     val lastIndex=route.length-1
