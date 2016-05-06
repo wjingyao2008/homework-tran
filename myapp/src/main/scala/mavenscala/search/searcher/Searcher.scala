@@ -10,7 +10,4 @@ trait Searcher {
 
   def search(iterator:RouteIterator):String
 
-  def calcDistance(validPath:Seq[Edge]):Int={
-    validPath.map(_.distance).sum
-  }
 }

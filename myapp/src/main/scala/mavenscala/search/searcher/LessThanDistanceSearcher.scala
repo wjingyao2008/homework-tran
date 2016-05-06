@@ -2,6 +2,7 @@ package mavenscala.search.searcher
 
 import mavenscala.railroad.Edge
 import mavenscala.search.RouteIterator
+import mavenscala.search.searcher.calculator.DistanceCalculator
 
 /**
   * Created by y28yang on 4/25/2016.
@@ -10,10 +11,10 @@ class LessThanDistanceSearcher(val startName: String,
                                val stopName: String,
                                val lessThanDistance: Int) extends Searcher{
 
-
+  val routeCalculator=new DistanceCalculator
 
   def distanceNotExceed(route: Seq[Edge]): Boolean={
-    calcDistance(route)<lessThanDistance
+    routeCalculator.calcDistance(route)<lessThanDistance
   }
 
 
